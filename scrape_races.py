@@ -19,8 +19,6 @@ headers = [header.text for header in table.find_all('th')]
 print(headers)
 
 rows = list()
-# for row in table.find_all('tr'):
-#     rows.append([val.text for val in row.find_all('td')])
 
 for row in table.find_all('tr'):
     content = list()
