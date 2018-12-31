@@ -57,7 +57,15 @@ def clean_text_df(df):
     return df
 
 def clean_race_df(df):
+    """
+    Cleans and normalizes columns in race data frame.
     
+    Arguments:
+        df: Dataframe to be cleaned. 
+    
+    Returns:
+        df: Clean and normalized dataframe.
+    """
     # Convert Race Id into integer
     df.Race = df.Race.astype('int')
     
