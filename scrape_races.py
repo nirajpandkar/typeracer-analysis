@@ -3,7 +3,16 @@ import requests
 import csv
 import time
 import re
-r = requests.get("http://www.typeracerdata.com/profile?username=nirajp&last=99999999")
+import argparse
+
+ap = argparse.ArgumentParser()
+
+ap.add_argument("-u", "--username", required=True,
+                help="Enter the username who's race data you want to download")
+args = vars(ap.parse_args())
+
+username = args["username"]
+r = requests.get("http://www.typeracerdata.com/profile?username=" + username + "&last=99999999")
 data = r.text
 
 start = time.time()
@@ -29,7 +38,7 @@ for row in table.find_all('tr'):
             content.append(col.text)
     rows.append(content)
 
-with open("data/races.csv", "w") as outfile:
+with open("data/races_" + username + ".csv", "w") as outfile:
     writer = csv.writer(outfile)
     writer.writerow(headers)
     writer.writerows(row for row in rows if row)
