@@ -33,5 +33,7 @@ All the analysis has been done on my race data.
 python clean_and_normalize.py
 ```
 
+**Note**: Don't forget to change the races CSV filename if you decide to use someone else's race data.
+
 * Cleaned data will be available in 'data' folder. Use the notebooks for further analysis.
 
