@@ -3,12 +3,12 @@ import requests
 import csv
 import time
 import re
-# r = requests.get("http://www.typeracerdata.com/texts?texts=full&sort=id")
-# data = r.text
+r = requests.get("http://www.typeracerdata.com/profile?username=nirajp&last=99999999")
+data = r.text
 
 start = time.time()
-with open("races.html" ,"r") as infile:
-    data = infile.read()
+# with open("data/races.html" ,"r") as infile:
+#     data = infile.read()
 soup = BeautifulSoup(data, 'html.parser')
 
 tables = soup.findAll('table')
@@ -29,7 +29,7 @@ for row in table.find_all('tr'):
             content.append(col.text)
     rows.append(content)
 
-with open("races.csv", "w") as outfile:
+with open("data/races_new.csv", "w") as outfile:
     writer = csv.writer(outfile)
     writer.writerow(headers)
     writer.writerows(row for row in rows if row)

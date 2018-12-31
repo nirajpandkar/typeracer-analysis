@@ -3,12 +3,12 @@ import requests
 import csv
 import time
 
-# r = requests.get("http://www.typeracerdata.com/texts?texts=full&sort=id")
-# data = r.text
+r = requests.get("http://www.typeracerdata.com/texts?texts=full&sort=id")
+data = r.text
 
 start = time.time()
-with open("texts.html" ,"r") as infile:
-    data = infile.read()
+# with open("data/texts.html" ,"r") as infile:
+#     data = infile.read()
 soup = BeautifulSoup(data, 'html.parser')
 
 table = soup.find('table')
@@ -20,7 +20,7 @@ rows = list()
 for row in table.find_all('tr'):
     rows.append([val.text for val in row.find_all('td')])
 
-with open("texts.csv", "w") as outfile:
+with open("data/texts_new.csv", "w") as outfile:
     writer = csv.writer(outfile)
     writer.writerow(headers)
     writer.writerows(row for row in rows if row)
