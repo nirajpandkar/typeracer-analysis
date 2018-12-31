@@ -20,7 +20,7 @@ rows = list()
 for row in table.find_all('tr'):
     rows.append([val.text for val in row.find_all('td')])
 
-with open("data/texts_new.csv", "w") as outfile:
+with open("data/texts.csv", "w") as outfile:
     writer = csv.writer(outfile)
     writer.writerow(headers)
     writer.writerows(row for row in rows if row)

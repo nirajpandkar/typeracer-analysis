@@ -29,7 +29,7 @@ for row in table.find_all('tr'):
             content.append(col.text)
     rows.append(content)
 
-with open("data/races_new.csv", "w") as outfile:
+with open("data/races.csv", "w") as outfile:
     writer = csv.writer(outfile)
     writer.writerow(headers)
     writer.writerows(row for row in rows if row)
